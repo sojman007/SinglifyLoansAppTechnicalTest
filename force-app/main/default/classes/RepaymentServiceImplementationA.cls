@@ -22,8 +22,8 @@ implements IRepaymentService{
 
         decimal totalLoanInterest = request.Interest__c * request.Suma_Credit__c / 100;
         for(Integer i =1 ; i <= repaymentDates.size(); i++){
-            RepaymentDatesDecorator rdDate = repaymentDates[i-1];
-            // System.debug(repaymentDate);
+            RepaymentDatesDecorator rpDate = repaymentDates[i-1];
+            System.debug(repaymentDate);
             // Loan_Repayment_Schedule__c schedule = new Loan_Repayment_Schedule__c();
             if(rpDate.hasRepayment == true){
                 // call a service to calculate the repayment fee

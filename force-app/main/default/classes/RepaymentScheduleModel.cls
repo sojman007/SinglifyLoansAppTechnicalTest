@@ -12,10 +12,13 @@ public class RepaymentScheduleModel {
      */ 
     public static List<RepaymentScheduleModel> generateTableData(List<Loan_Repayment_Schedule__c> repaymentRecords, Loan_Request__c loanRequest) {
         List<RepaymentScheduleModel> response = new List<RepaymentScheduleModel>();
-        for(integer i = 1; i < loanRequest.Number_Of_Months__c ; i++){
-            
-
-
+        integer index =1;
+        for(Loan_Repayment_Schedule__c rep : repaymentRecords) {
+            RepaymentScheduleModel model = new RepaymentScheduleModel();
+            model.repaymentSchedule = rep;
+            model.index = index;
+            response.add(model);
+            index++;
         }
 
 
