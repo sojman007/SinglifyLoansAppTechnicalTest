@@ -1,0 +1,33 @@
+<apex:page standardController="Loan_Request__c" extensions="RepaymentGeneratorWizardController">
+    <apex:form>
+        <apex:pageMessages></apex:pageMessages>
+        <apex:pageBlock rendered="{!displayContent}">
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Generate Repayment Schedules" action="{!onGenerateRepaymentSchedules}" disabled="{! disableAction}"></apex:commandButton>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel>Select Service Type :</apex:outputLabel>
+                    <apex:selectList size="1" value="{!implementation}">
+                        <apex:selectOptions value="{!implementationOptions}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Repayments" columns="1" collapsible="false">
+                <apex:pageBlockTable value="{!GeneratedRepayments}" var="repayment">
+                    <apex:column headerValue="#" value="{!repayment.index}"></apex:column>
+                    <apex:column headerValue="Date" value="{!repayment.repaymentSchedule.Date__c}">
+                    </apex:column>
+                    <apex:column headerValue="Interest" value="{!repayment.repaymentSchedule.Interest__c}">
+                    </apex:column>
+                    <apex:column headerValue="Fees" value="{!repayment.repaymentSchedule.Fees__c}">
+                    </apex:column>
+                    <apex:column headerValue="Principal" value="{!repayment.repaymentSchedule.Principal__c}">
+                    </apex:column>
+                    <apex:column headerValue="Total Amount" value="{!repayment.repaymentSchedule.Total_Amount__c}">
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
